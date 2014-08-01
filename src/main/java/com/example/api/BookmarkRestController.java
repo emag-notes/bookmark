@@ -4,6 +4,7 @@ import com.example.domain.Bookmark;
 import com.example.service.BookmarkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +28,7 @@ public class BookmarkRestController {
 
   @RequestMapping(method = RequestMethod.POST)
   @ResponseStatus(HttpStatus.CREATED)
-  Bookmark postBookmark(@RequestBody Bookmark bookmark) {
+  Bookmark postBookmark(@Validated @RequestBody Bookmark bookmark) {  // @Validated をつけると 400 として返す。つけない場合は 500
     return bookmarkService.save(bookmark);
   }
 
