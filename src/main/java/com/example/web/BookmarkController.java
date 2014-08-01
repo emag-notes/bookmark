@@ -34,6 +34,11 @@ public class BookmarkController {
     return "bookmark/list";
   }
 
+  @RequestMapping(value = "register", method = RequestMethod.GET)
+  String register() {
+    return "bookmark/register";
+  }
+
   @RequestMapping(value = "create", method = RequestMethod.POST)
   String create(@Validated Bookmark bookmark, BindingResult bindingResult, Model model) {
     if (bindingResult.hasErrors()) {
@@ -48,4 +53,5 @@ public class BookmarkController {
     bookmarkService.delete(id);
     return "redirect:/bookmark/list";
   }
+
 }
