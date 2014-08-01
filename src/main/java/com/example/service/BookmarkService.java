@@ -17,6 +17,10 @@ public class BookmarkService {
   @Autowired
   BookmarkRepository bookmarkRepository;
 
+  public Bookmark find(Long id) {
+    return bookmarkRepository.findOne(id);
+  }
+
   public List<Bookmark> findAll() {
     return bookmarkRepository.findAll(new Sort(Sort.Direction.ASC, "id"));
   }

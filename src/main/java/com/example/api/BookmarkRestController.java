@@ -21,6 +21,11 @@ public class BookmarkRestController {
   @Autowired
   BookmarkService bookmarkService;
 
+  @RequestMapping(value = "{id}", method = RequestMethod.GET)
+  Bookmark getBookmark(@PathVariable("id") Long id) {
+    return bookmarkService.find(id);
+  }
+
   @RequestMapping(method = RequestMethod.GET)
   List<Bookmark> getBookmarks() {
     return bookmarkService.findAll();
