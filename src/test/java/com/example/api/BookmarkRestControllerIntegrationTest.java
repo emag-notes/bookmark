@@ -55,7 +55,19 @@ public class BookmarkRestControllerIntegrationTest {
 
     apiEndPoint = "http://localhost:" + port + "/api/bookmarks";
   }
-  
+
+  @Test
+  public void testGetBookmark() throws Exception {
+    ResponseEntity<Bookmark> response = restTemplate.exchange(apiEndPoint + "/{id}",
+                                      HttpMethod.GET, null, Bookmark.class, Collections.singletonMap("id", springIO.getId()));
+    assertThat(response.getStatusCode(), is(HttpStatus.OK));
+
+    Bookmark bookmark = response.getBody();
+    assertThat(bookmark.getId(), is(springIO.getId()));
+    assertThat(bookmark.getName(), is(springIO.getName()));
+    assertThat(bookmark.getUrl(), is(springIO.getUrl()));
+  }
+
   @Test
   public void testGetBookmarks() throws Exception {
     ResponseEntity<List<Bookmark>> response = restTemplate.exchange(apiEndPoint,
