@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.awt.print.Book;
 
 @Entity
 public class Bookmark {
@@ -20,6 +21,13 @@ public class Bookmark {
   @NotNull
   @Size(min = 1, max = 255)
   private String url;
+
+  public Bookmark() {}
+
+  public Bookmark(String name, String url) {
+    this.name = name;
+    this.url = url;
+  }
 
   public Long getId() {
     return id;
