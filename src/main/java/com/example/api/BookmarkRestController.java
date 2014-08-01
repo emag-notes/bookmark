@@ -31,7 +31,7 @@ public class BookmarkRestController {
     return bookmarkService.save(bookmark);
   }
 
-  @RequestMapping(method = RequestMethod.DELETE)
+  @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
   @ResponseStatus(HttpStatus.NO_CONTENT)
   void deleteBookmark(@PathVariable("id") Long id) {
     bookmarkService.delete(id);
